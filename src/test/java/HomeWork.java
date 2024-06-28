@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class HomeWork {
     WebDriver wd;
 
@@ -13,6 +15,47 @@ public class HomeWork {
     public void setUp() {
         wd = new ChromeDriver();
         wd.get("https://telranedu.web.app/login");
+    }
+
+
+
+    @Test
+    public void classwork(){
+
+        //parent
+
+        WebElement el = wd.findElement(By.xpath("//h1/parent::div"));
+        WebElement el1 = wd.findElement(By.xpath("//h1/parent::*"));
+        WebElement el2 = wd.findElement(By.xpath("//h1/.."));
+
+        //ancestor
+
+        WebElement el3 = wd.findElement(By.xpath("//h1/ancestor::*")); // all
+        List<WebElement> list4 = wd.findElements(By.xpath("//h1/ancestor::*"));
+
+        WebElement el4 = wd.findElement(By.xpath("//h1/ancestor::div")); // two options
+        List<WebElement> list5 = wd.findElements(By.xpath("//h1/ancestor::div"));
+
+        WebElement el5 = wd.findElement(By.xpath("//h1/ancestor::div[2]")); // one option
+
+        //ancestor-or-self
+
+        WebElement el6 = wd.findElement(By.xpath("//h1/ancestor-or-self::*")); // all + h1
+        List<WebElement> list = wd.findElements(By.xpath("//h1/ancestor-or-self::*"));
+
+        //following-sibling
+
+        List<WebElement> list1 = wd.findElements(By.xpath("//h1/following-sibling::*"));
+        List<WebElement> list2 = wd.findElements(By.xpath("//h1/following-sibling::a"));
+
+        //preceding-sibling
+
+        WebElement  el7 = wd.findElement(By.xpath("//a[last()]/preceding-sibling::a[2]"));
+        List<WebElement> list6 = wd.findElements(By.xpath("//a[last()]/preceding-sibling::*"));
+
+        wd.quit();
+
+
     }
 
 
